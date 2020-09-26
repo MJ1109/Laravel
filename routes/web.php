@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
+route::get('/about-us', 'AboutController@show')->name('about');
+
+Route::get('details', 'DetailsController@show')->name('details');

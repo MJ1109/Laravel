@@ -1,5 +1,4 @@
 @extends('layout')
-
     @section('content')
 
         <div class="flex-center position-ref full-height">
@@ -19,7 +18,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                   About page biiii
                 </div>
 
                 <div class="links">
@@ -31,11 +30,8 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                    <a href="{{route('about')}}">About</a>
                 </div>
             </div>
         </div>
-        </body>
-        </html>
-
-    @endsection
+    </body>
+</html>
