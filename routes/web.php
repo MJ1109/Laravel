@@ -22,5 +22,5 @@ route::get('news', 'NewsItemController@index') ->name('news');
 route::get('news/create', 'NewsItemController@create')->name('news.create');
 route::post('news/store', 'NewsItemController@store')-> name('news.store');
 route::get('news/{id}', 'NewsItemController@show')->name('news.show');
-
+ 
 //Route::get('details', 'DetailsController@show')->name('details');
