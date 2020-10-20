@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\NewsItem;
 use Illuminate\Http\Request;
 
-class NewsItemController extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class NewsItemController extends Controller
     public function index()
     {
         $newsItems = NewsItem:: all();
-            return view('news-items/index',[
+            return view('items/index',[
                 'newsItems => $newsItems'
             ]);
     }
