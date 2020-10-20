@@ -19,7 +19,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Rate it!
+                    Rate it! what is wrong with my git?
                 </div>
 
                 <div class="links">
