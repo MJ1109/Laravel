@@ -18,12 +18,12 @@ Route::get('/', function () {
 });
 
 route::get('/about-us', 'AboutController@show')->name('about');
-route::get('news', 'ItemController@index') ->name('news');
-
-route::get('news/create', 'ItemController@create')->name('news.create');
-route::post('news/store', 'ItemController@store')-> name('news.store');
-route::get('news/{id}', 'ItemController@show')->name('news.show');
-
+route::get('overview', 'PostsController@index') ->name('overview');
 route::get('details', 'DetailsController@show')->name('details');
+
+route::get('news/create', 'PostsController@create')->name('news.create');
+route::post('news/store', 'PostsController@store')-> name('news.store');
+route::get('news/{id}', 'PostsController@show')->name('news.show');
+
 
 //Route::get('details', 'DetailsController@show')->name('details');
