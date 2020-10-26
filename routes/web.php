@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/posts/{post}','PostsController@show');
+
+
+
 //route::get('/about-us', 'AboutController@show')->name('about');
-//route::get('overview', 'PostsController@index') ->name('overview');
-//route::get('details', 'DetailsController@show')->name('details');
+//route::get('/overview', 'PostsController@index') ->name('overview');
+//route::get('/details', 'DetailsController@show')->name('details');
 //
 //route::get('news/create', 'PostsController@create')->name('news.create');
 //route::post('news/store', 'PostsController@store')-> name('news.store');
