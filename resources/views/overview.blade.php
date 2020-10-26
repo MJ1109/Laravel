@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="row">
-        @foreach($newItem as $newItem)
+        @foreach($newItems as $newItem)
             <h2> {{$newItem['title']}}</h2>
             <p>{{$newItem['description']}}</p>
             <img src="{{$newItem['image']}}">
