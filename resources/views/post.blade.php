@@ -11,8 +11,18 @@
     <title>Document</title>
 </head>
 <body>
-<h1>My blog post</h1>
-<p>{{ $post -> body }}</p>
+<div id="posts">
+    @foreach($posts as $post)
+{{--        <li>--}}
+            <h3> <a href="#"> {{$post->title}}</a></h3>
+{{--            <p> {{$post->description}} </p>--}}
+        </li>
+
+
+    @endforeach
+
+</div>
+
 </body>
 </html>
 

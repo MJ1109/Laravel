@@ -17,7 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts/{post}','PostsController@show');
+Route::get('/post', function(){
+    $posts = App\Post::all();
+
+    return view('post',[
+        'posts'=>$posts
+    ]);
+
+});
+
 
 
 
