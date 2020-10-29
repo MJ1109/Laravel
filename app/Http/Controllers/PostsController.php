@@ -50,7 +50,7 @@ class PostsController extends Controller
         $post = Post::where('slug', $slug)->firstOrFail();
 
         return view('post', [
-            'post' => $post
+            'post' => $postphp
         ]);
     }
 
