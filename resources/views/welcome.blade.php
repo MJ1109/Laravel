@@ -33,7 +33,7 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
 {{--                    <a href="{{route('about')}}">About</a>--}}
 {{--                    <a href="{{route('details')}}">Site details</a>--}}
-{{--                    <a href="{{route('overview')}}">Overview</a>--}}
+                    <a href="{{route('overview')}}">Overview</a>
                 </div>
             </div>
         </div>

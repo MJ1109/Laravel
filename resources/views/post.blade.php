@@ -1,30 +1,13 @@
 @extends('layout')
 
 @section('content')
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<div id="posts">
-    @foreach($posts as $post)
-{{--        <li>--}}
-            <h3> <a href="#"> {{$post->title}}</a></h3>
-{{--            <p> {{$post->description}} </p>--}}
-        </li>
+<h1>{{$post->title}}</h1>
+    <p>{{$post->description}}    </p>
 
-
-    @endforeach
-
-</div>
-
-</body>
-</html>
+@if ($post->type==0)
+    <p>film</p>
+@else
+    <p>serie</p>
+@endif
 
 @endsection
-

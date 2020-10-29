@@ -17,20 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/post', function(){
-    $posts = App\Post::all();
-
-    return view('post',[
-        'posts'=>$posts
-    ]);
-
-});
-
-
+Route::get('/post', 'PostsController@index')->name('overview');
+Route::get('/post/{id}', 'PostsController@show');
 
 
 //route::get('/about-us', 'AboutController@show')->name('about');
-//route::get('/overview', 'PostsController@index') ->name('overview');
+
 //route::get('/details', 'DetailsController@show')->name('details');
 //
 //route::get('news/create', 'PostsController@create')->name('news.create');

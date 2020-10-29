@@ -15,7 +15,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+        return view('index', [
+            'posts' => $posts
+        ]);
     }
 
     /**
@@ -45,13 +49,13 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
+      $post=Post::findOrFail($id);
 
-        return view('post', [
-            'post' => $postphp
-        ]);
+      return view('post',[
+          "post"=>$post
+      ]);
     }
 
     /**
