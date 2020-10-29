@@ -20,6 +20,10 @@ Route::get('/', function () {
 Route::get('/post', 'PostsController@index')->name('overview');
 Route::get('/post/{id}', 'PostsController@show');
 
+//routes that came with the artisan ui
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 //route::get('/about-us', 'AboutController@show')->name('about');
 
@@ -32,6 +36,4 @@ Route::get('/post/{id}', 'PostsController@show');
 
 //Route::get('details', 'DetailsController@show')->name('details');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
