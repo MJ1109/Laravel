@@ -32,9 +32,7 @@ class PostsController extends Controller
     {
         $post=Post::findOrFail($id);
 
-        return view('post',[
-            "post"=>$post
-        ]);
+        return view('post',["post"=>$post]);
     }
 
     /**
@@ -44,7 +42,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('create');
     }
 
     /**

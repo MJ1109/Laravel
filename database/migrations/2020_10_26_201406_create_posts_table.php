@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
         });
     }
-
+//genre has to be added!!
     /**
      * Reverse the migrations.
      *
