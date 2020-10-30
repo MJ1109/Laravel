@@ -56,7 +56,9 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //validation
-
+        request()->validate([
+            'title'=> [ required]
+        ])
         //clean up
         $post= new Post();
         $post->title = request('title');
@@ -94,7 +96,7 @@ class PostsController extends Controller
 
         $post->title = request('title');
         $post->image = request('image');
-        $post->type = $request->input('type');
+        $post->type = request ('type');
         $post->year = request ('year');
         $post->description = request ('description');
         $post->save();
