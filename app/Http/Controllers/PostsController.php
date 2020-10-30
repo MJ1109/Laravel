@@ -23,6 +23,21 @@ class PostsController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $post=Post::findOrFail($id);
+
+        return view('post',[
+            "post"=>$post
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -41,21 +56,6 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-      $post=Post::findOrFail($id);
-
-      return view('post',[
-          "post"=>$post
-      ]);
     }
 
     /**

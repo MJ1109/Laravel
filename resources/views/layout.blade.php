@@ -56,6 +56,7 @@
     </style>
 </head>
 <body>
+<nav><a class="#" href="/"> back!</a></nav>
 @yield ('content')
 </body>
 </html>
