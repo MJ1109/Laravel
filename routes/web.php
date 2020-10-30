@@ -22,7 +22,7 @@ Route::get('/post/{id}', 'PostsController@show');
 
 //routes that came with the artisan ui
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');//auth staat hier omdat dit vaker voorkomt dan in homecontroller
 
 
 //route::get('/about-us', 'AboutController@show')->name('about');
