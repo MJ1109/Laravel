@@ -5,6 +5,7 @@ use DB;
 use App\Post;
 
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 
 class PostsController extends Controller
 {
@@ -15,7 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::all()
+        ->sortByDesc('created_at');
 
         return view('index', [
             'posts' => $posts
@@ -53,7 +55,18 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+
+        //clean up
+        $post= new Post();
+        $post->title = request('title');
+        $post->image = request('image');
+        $post->type = request ('type');
+        $post->year = request ('year');
+        $post->description = request ('description');
+        $post->save();
+
+        return redirect('/post');
     }
 
     /**
@@ -64,7 +77,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post=Post::find($id);
+        return view ('edit',['post'=>$post]);
     }
 
     /**
@@ -76,7 +90,16 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post=Post::find($id);
+
+        $post->title = request('title');
+        $post->image = request('image');
+        $post->type = $request->input('type');
+        $post->year = request ('year');
+        $post->description = request ('description');
+        $post->save();
+
+        return redirect('/post/'.$post->id);
     }
 
     /**

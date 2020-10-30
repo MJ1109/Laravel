@@ -4,20 +4,42 @@
         <h1>Add a new movie!</h1>
     </div>
 
-    <form>
+    <form method="POST" action="/post">
+        @csrf
         <div class="field">
             <label class="label" for="title">Movie/show Title:</label>
-            <input type="text" id="title" name="title"><br>
+            <input type="text" name="title"><br>
         </div>
 
         <div class="field">
         <label class="label" for="image">Poster of the show/movie</label>
-        <input type="file" id="image" name="image"><br>
+        <input type="text" name="image"><br>
         </div>
 
         <div class="field">
             <label class="label" for="type"> Show or Movie?</label>
-            <input type="checkbox"
+
+            <input type="radio" name="type" value="0">
+            <label class="label">movie</label>
+
+            <input type="radio" name="type" value="1">
+            <label type="label">serie</label>
         </div>
+
+        <div class="field">
+            <label class="label" for="year">Release year</label>
+            <input type="number" name="year">
+        </div>
+
+        <div class="field">
+            <label for="description" class="label">Description:</label>
+            <input type="text" name="description">
+        </div>
+
+        <div>
+            <button type="submit">submit!</button>
+        </div>
+
+
     </form>
 @endsection
