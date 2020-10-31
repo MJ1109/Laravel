@@ -37,6 +37,38 @@
         <label for="description" class="label">Description:</label>
         <input type="text" name="description" value="{{$post->description}}">
     </div>
+    <div class="field">
+        <label class="label" for="genre"> Genre </label>
+
+        <input type="radio" name="genre" value="1">
+        <label class="label">Comedy</label>
+
+        <input type="radio" name="genre" value="2">
+        <label class="label">Action</label>
+
+        <input type="radio" name="genre" value="3">
+        <label class="label">Adventure</label>
+
+        <input type="radio" name="genre" value="4">
+        <label class="label">Crime</label>
+
+        <input type="radio" name="genre" value="5">
+        <label class="label">Drama</label>
+
+        <input type="radio" name="genre" value="6">
+        <label class="label">Fantasy</label>
+
+        <input type="radio" name="genre" value="7">
+        <label class="label">Horror</label>
+
+        <input type="radio" name="genre" value="8">
+        <label class="label">Thriller</label>
+
+        <input type="radio" name="genre" value="9">
+        <label class="label">Romance</label>
+
+    </div>
+
 
     <div>
         <button type="submit">submit!</button>

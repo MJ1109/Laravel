@@ -75,7 +75,8 @@ class PostsController extends Controller
         $post->type = request ('type');
         $post->year = request ('year');
         $post->description = request ('description');
-        $post->user_id = Auth::id();
+
+        $post->user_id = Auth::id(); //links the user id to the post
         $post->save();
 
 
@@ -91,6 +92,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post=Post::findOrFail($id);
+
+        $this->authorize('editPost', $post);
+
         return view ('edit',['post'=>$post]);
     }
 
@@ -108,7 +112,7 @@ class PostsController extends Controller
         //validation
         request()->validate([
             'title'=> 'required',
-            'genre'=>'genre',
+            'genre'=>'required',
             'image'=> 'required|ends_with:.jpg',
             'type'=> 'required',
             'year'=> 'required',
@@ -117,7 +121,7 @@ class PostsController extends Controller
         ]);
 
         $post->title = request('title');
-        $post->genre=request('genre');
+        $post->genre_id=request('genre');
         $post->image = request('image');
         $post->type = request ('type');
         $post->year = request ('year');
