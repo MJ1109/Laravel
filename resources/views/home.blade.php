@@ -15,6 +15,9 @@
                     @endif
 
                     <p>You are logged in! {{Auth::user()->name}}</p>
+
+                    <a href="{{route('create')}}">create a post</a>
+
                 </div>
             </div>
         </div>

@@ -53,6 +53,13 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+        img{
+            display: block;
+            max-width: 20vw;
+            max-height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>

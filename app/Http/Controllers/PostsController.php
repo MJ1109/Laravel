@@ -58,13 +58,14 @@ class PostsController extends Controller
         //validation
         request()->validate([
             'title'=> 'required',
-            'image'=> 'required|ends_with:.jpg',
+            'image'=> 'required|ends_with:.jpg,.png,.jpeg',
             'type'=> 'required',
             'year'=> 'required',
             'description'=> 'required'
 
         ]);
-        //clean up
+
+        //not the best way, but it works. Only has a lot of repition
         $post= new Post();
         $post->title = request('title');
         $post->image = request('image');
@@ -84,7 +85,7 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post=Post::find($id);
+        $post=Post::findOrFail($id);
         return view ('edit',['post'=>$post]);
     }
 
@@ -97,7 +98,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post=Post::find($id);
+        $post=Post::findOrFail($id);
 
         //validation
         request()->validate([
