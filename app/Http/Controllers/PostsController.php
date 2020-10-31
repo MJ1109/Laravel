@@ -20,7 +20,7 @@ class PostsController extends Controller
         $posts = Post::all()
         ->sortByDesc('created_at');
 
-        return view('index', [
+        return view('posts.index', [
             'posts' => $posts
         ]);
     }
@@ -35,7 +35,9 @@ class PostsController extends Controller
     {
         $post=Post::findOrFail($id);
 
-        return view('post',["post"=>$post]);
+        return view('posts.post',[
+            "post"=>$post
+        ]);
     }
 
     /**
@@ -45,7 +47,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view ('create');
+        return view ('posts.create');
     }
 
     /**
@@ -95,7 +97,7 @@ class PostsController extends Controller
 
         $this->authorize('editPost', $post);
 
-        return view ('edit',['post'=>$post]);
+        return view ('posts.edit',['post'=>$post]);
     }
 
     /**
