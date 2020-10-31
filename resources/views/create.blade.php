@@ -8,12 +8,19 @@
         @csrf
         <div class="field">
             <label class="label" for="title">Movie/show Title:</label>
-            <input type="text" name="title"><br>
+            <input class="input @error('title') @enderror" type="text" name="title"><br>
+
+            @error('title')
+                <p class="errorText">{{$errors->first('title') }}</p>
+            @enderror
         </div>
 
         <div class="field">
         <label class="label" for="image">Poster of the show/movie</label>
-        <input type="text" name="image"><br>
+        <input class="input @error('image') @enderror" type="text" name="image"><br>
+            @error('image')
+            <p class="errorText">{{$errors->first('image') }}</p>
+            @enderror
         </div>
 
         <div class="field">
@@ -28,12 +35,18 @@
 
         <div class="field">
             <label class="label" for="year">Release year</label>
-            <input type="number" name="year">
+            <input class="input @error('year') @enderror" type="number" name="year">
+            @error('year')
+            <p class="errorText">{{$errors->first('year') }}</p>
+            @enderror
         </div>
 
         <div class="field">
             <label for="description" class="label">Description:</label>
-            <input type="text" name="description">
+            <input class="input @error('description') @enderror" type="text" name="description">
+            @error('description')
+            <p class="errorText">{{$errors->first('description') }}</p>
+            @enderror
         </div>
 
         <div>

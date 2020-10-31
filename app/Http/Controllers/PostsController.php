@@ -57,8 +57,13 @@ class PostsController extends Controller
     {
         //validation
         request()->validate([
-            'title'=> [ required]
-        ])
+            'title'=> 'required',
+            'image'=> 'required|ends_with:.jpg',
+            'type'=> 'required',
+            'year'=> 'required',
+            'description'=> 'required'
+
+        ]);
         //clean up
         $post= new Post();
         $post->title = request('title');
@@ -94,12 +99,24 @@ class PostsController extends Controller
     {
         $post=Post::find($id);
 
+        //validation
+        request()->validate([
+            'title'=> 'required',
+            'image'=> 'required|ends_with:.jpg',
+            'type'=> 'required',
+            'year'=> 'required',
+            'description'=> 'required'
+
+        ]);
+
         $post->title = request('title');
         $post->image = request('image');
         $post->type = request ('type');
         $post->year = request ('year');
         $post->description = request ('description');
         $post->save();
+
+
 
         return redirect('/post/'.$post->id);
     }

@@ -30,12 +30,12 @@
 
     <div class="field">
         <label class="label" for="year">Release year</label>
-        <input type="number" name="year">
+        <input type="number" name="year" value="{{$post->year}}">
     </div>
 
     <div class="field">
         <label for="description" class="label">Description:</label>
-        <input type="text" name="description">
+        <input type="text" name="description" value="{{$post->description}}">
     </div>
 
     <div>

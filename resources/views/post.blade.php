@@ -12,4 +12,7 @@
     @endif
     <p>This movie was released in {{$post->year}}.</p>
 
+    <a href="/post/{{ $post->id }}/edit">edit this page</a>
+
+
 @endsection
