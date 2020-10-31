@@ -5,6 +5,7 @@ use DB;
 use App\Post;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 
 class PostsController extends Controller
@@ -58,6 +59,7 @@ class PostsController extends Controller
         //validation
         request()->validate([
             'title'=> 'required',
+            'genre'=>'required',
             'image'=> 'required|ends_with:.jpg,.png,.jpeg',
             'type'=> 'required',
             'year'=> 'required',
@@ -68,11 +70,14 @@ class PostsController extends Controller
         //not the best way, but it works. Only has a lot of repition
         $post= new Post();
         $post->title = request('title');
+        $post->genre_id = request('genre');
         $post->image = request('image');
         $post->type = request ('type');
         $post->year = request ('year');
         $post->description = request ('description');
+        $post->user_id = Auth::id();
         $post->save();
+
 
         return redirect('/post');
     }
@@ -103,6 +108,7 @@ class PostsController extends Controller
         //validation
         request()->validate([
             'title'=> 'required',
+            'genre'=>'genre',
             'image'=> 'required|ends_with:.jpg',
             'type'=> 'required',
             'year'=> 'required',
@@ -111,6 +117,7 @@ class PostsController extends Controller
         ]);
 
         $post->title = request('title');
+        $post->genre=request('genre');
         $post->image = request('image');
         $post->type = request ('type');
         $post->year = request ('year');

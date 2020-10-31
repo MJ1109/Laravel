@@ -6,3 +6,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+img{
+        display: block;
+        max-width: auto;
+        max-height: 20vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
