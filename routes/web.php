@@ -18,11 +18,14 @@ Route::get('/', function () {
 });
 //routes for the post actions
 Route::get('/post', 'PostsController@index')->name('overview');           //shows all posts
-Route::post('post', 'PostsController@store');//-> name('post.store');  // shows the store post screen
-Route::get('/post/create', 'PostsController@create')->name('create')->middleware('auth');//shows the create post screen
-Route::get('/post/{id}', 'PostsController@show')->name('post.show');      //shows specific post
-Route::get('/post/{id}/edit', 'PostsController@edit')->name('edit')->middleware('auth'); //shows the edit post screen
+Route::post('post', 'PostsController@store')-> name('posts.store');  // shows the store post screen
+Route::get('/post/create', 'PostsController@create')->name('posts.create')->middleware('auth');//shows the create post screen
+Route::get('/post/{id}', 'PostsController@show')->name('posts.show');      //shows specific post
+Route::get('/post/{id}/edit', 'PostsController@edit')->name('posts.edit')->middleware('auth'); //shows the edit post screen
 Route::put('/post/{id}', 'PostsController@update');
+
+//routes for the admin
+Route::get('/users', 'UsersController@index');
 
 //routes that came with the artisan ui. Middleware is here because this is more common than in the controller
 Auth::routes();

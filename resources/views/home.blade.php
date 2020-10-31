@@ -16,7 +16,7 @@
 
                     <p>You are logged in! {{Auth::user()->name}}</p>
 
-                    <a href="{{route('create')}}">create a post</a>
+                    <a href="{{route('posts.create')}}">create a post</a>
 
 {{--                        overview of users' posts--}}
                         @foreach($posts as $post)

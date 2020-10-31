@@ -40,11 +40,11 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
-//        Gate::define('UsersOverview', function(User $user){
-//            if($user->admin){
-//                return true;
-//            }
-//        });
+        Gate::define('viewUsers', function(User $user){
+            if($user->admin == 1){
+                return true;
+            }
+        });
 
     }
 }
