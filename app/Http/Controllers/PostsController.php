@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Genre;
 use DB;
 use App\Post;
 
@@ -17,8 +18,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()
-        ->sortByDesc('created_at');
+        $posts = Post::where('active', 1)
+            ->orderByDesc('created_at')
+            ->get();
+
 
         return view('posts.index', [
             'posts' => $posts
@@ -34,9 +37,11 @@ class PostsController extends Controller
     public function show($id)
     {
         $post=Post::findOrFail($id);
+        $genre=Genre::where('id', $post->genre_id)->first();
 
         return view('posts.post',[
-            "post"=>$post
+            "post"=>$post,
+            "genre"=>$genre
         ]);
     }
 
@@ -145,4 +150,6 @@ class PostsController extends Controller
     {
         //
     }
+
+
 }

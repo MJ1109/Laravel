@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -19,31 +20,55 @@ class UsersController extends Controller
         ]);
     }
 
+    public function activePost(Request $request){
+        $request->validate([
+            'active'=> 'required'
+        ]);
+
+        $post_id = $request->input('post_id');
+        $post= Post::whereId($post_id)->first();
+
+        $post->active = $request->input('active');
+        $post->save();
+
+        return redirect('/home');
+
+    }
+//    public function show($user){
+////        $this->authorize('editUsers');
+//    return $user;
+//
+//    }
+//
+//    public function store(Request $request){
+//
+//}
+//
+//    public function edit($users_id){
+//        $this->authorize('editUser', $users_id);
+//        return view('users.edit', [
+//            'user' => $user
+//        ]);
+//    }
+//    }
+//
 //    public function update(Request $request, $id)
 //    {
-//        $post=Post::findOrFail($id);
+//        $user=User::findOrFail($id);
 //
 //        //validation
 //        request()->validate([
-//            'title'=> 'required',
-//            'genre'=>'required',
-//            'image'=> 'required|ends_with:.jpg',
-//            'type'=> 'required',
-//            'year'=> 'required',
-//            'description'=> 'required'
-//
+//            'name'=> 'required',
+//            'email'=>'required',
 //        ]);
 //
-//        $post->title = request('title');
-//        $post->genre_id=request('genre');
-//        $post->image = request('image');
-//        $post->type = request ('type');
-//        $post->year = request ('year');
-//        $post->description = request ('description');
-//        $post->save();
+//        $user->name = request('name');
+//        $user->email=request('email');
+//
+//        $user->save();
 //
 //
 //
-//        return redirect('/post/'.$post->id);
+//        return redirect('/post/'.$user->id);
 //    }
 }

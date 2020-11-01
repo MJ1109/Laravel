@@ -11,7 +11,7 @@
         <p>serie</p>
     @endif
     <p>This movie was released in {{$post->year}}.</p>
-    <p> The genre that's appropriate is: {{$post->genre_id}}</p>
+    <p> The genre is: {{$genre->genre}}</p>
 
     @can ('editPost', $post)<a href="/post/{{ $post->id }}/edit">edit this page</a>@endcan
 

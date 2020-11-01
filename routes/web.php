@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,14 @@ Route::get('/post/{id}', 'PostsController@show')->name('posts.show');      //sho
 Route::get('/post/{id}/edit', 'PostsController@edit')->name('posts.edit')->middleware('auth'); //shows the edit post screen
 Route::put('/post/{id}', 'PostsController@update');
 
+Route::post('/home', [UsersController::class, 'activePost'])->name('home');
+
 //routes for the admin
 Route::get('/users', 'UsersController@index');
+
+//route for the normal user
+//Route::get('/users/{user}', 'UsersController@show');
+//Route::get('/users/{$id}edit', 'UsersController@update');
 
 //routes that came with the artisan ui. Middleware is here because this is more common than in the controller
 Auth::routes();
