@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LikesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 //routes for the post actions Middleware is here because it's easy to see where auth is required
-Route::get('/post', 'PostsController@index')->name('overview');           //shows all posts
-Route::post('post', 'PostsController@store')-> name('posts.store');  // shows the store post screen
-Route::get('/post/create', 'PostsController@create')->name('posts.create')->middleware('auth');//shows the create post screen
-Route::get('/post/{id}', 'PostsController@show')->name('posts.show');      //shows specific post
-Route::get('/post/{id}/edit', 'PostsController@edit')->name('posts.edit')->middleware('auth'); //shows the edit post screen
-Route::put('/post/{id}', 'PostsController@update');
+Route::get('/posts', 'PostsController@index')->name('overview');           //shows all posts
+Route::post('posts', 'PostsController@store')->name('posts.store');  // shows the store post screen
+Route::get('/posts/create', 'PostsController@create')->name('posts.create')->middleware('auth');//shows the create post screen
+Route::get('/posts/{id}', 'PostsController@show')->name('posts.show');      //shows specific post
+Route::get('/posts/{id}/edit', 'PostsController@edit')->name('posts.edit')->middleware('auth'); //shows the edit post screen
+Route::put('/posts/{id}', 'PostsController@update');
 
+Route::post('/posts/{id}', 'LikesController@store');
+//filters
+Route::post('/search', 'PostsController@search');
+
+//turning posts on and off
 Route::post('/home', 'UsersController@activePost')->name('home');
 
 //routes for the admin

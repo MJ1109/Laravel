@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use App\Genre;
 use DB;
 use App\Post;
-
+use App\Likes;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
@@ -38,10 +39,12 @@ class PostsController extends Controller
     {
         $post=Post::findOrFail($id);
         $genre=Genre::where('id', $post->genre_id)->first();
+        $likes =Likes::where('post_id', $id)->get()->count();
 
         return view('posts.post',[
             "post"=>$post,
-            "genre"=>$genre
+            "genre"=>$genre,
+            "likes"=>$likes
         ]);
     }
 
@@ -82,12 +85,14 @@ class PostsController extends Controller
         $post->type = request ('type');
         $post->year = request ('year');
         $post->description = request ('description');
-
         $post->user_id = Auth::id(); //links the user id to the post
         $post->save();
 
+        $user=User::findOrFail (Auth ::id());
+        $user->num_of_posts++;
+        $user->save();
 
-        return redirect('/post');
+        return redirect('/posts');
     }
 
     /**
@@ -135,7 +140,7 @@ class PostsController extends Controller
         $post->description = request ('description');
         $post->save();
 
-        return redirect('/post/'.$post->id);
+        return redirect('/posts/'.$post->id);
     }
 
     /**
@@ -150,9 +155,34 @@ class PostsController extends Controller
     }
 
 
-    public function filter($id)
+    public function search(Request $request)
     {
-        //
-    }
+        $request->validate([
+        'search'=> 'max:255',
+        'genre' => 'nullable'
+        ]);
 
+        //make variables out of the search inputs
+        $search = $request->input('search');
+        $genre = $request ->input('genre');
+
+        //queries when filtering with/without genres
+        if ($genre == null ){
+        $posts=Post::where('title', 'LIKE', '%'.$search.'%' )
+        ->where ('active', 1)
+        ->latest()
+        ->get();
+        } else{
+        $posts=Post::where('title', 'LIKE', '%'.$search.'%')
+        ->where('genre_id', $genre)
+        ->where('active', 1)
+        ->latest()
+        ->get();
+        }
+
+        return view('posts.index',[
+                    "posts"=>$posts,
+                    "genre"=>$genre
+                ]);
+    }
 }

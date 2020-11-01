@@ -19,3 +19,4 @@
         </tr><br>
     @endforeach
     </tbody>
+@endsection

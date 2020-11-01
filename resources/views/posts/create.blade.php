@@ -5,7 +5,7 @@
         <h1>Add a new movie!</h1>
     </div>
 
-    <form method="POST" action="/post">
+    <form method="POST" action="/posts">
         @csrf
 
         <div class="field">

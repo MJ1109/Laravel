@@ -31,6 +31,12 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $admin
+ * @property int $num_of_posts
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Post[] $posts
+ * @property-read int|null $posts_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNumOfPosts($value)
  */
 class User extends Authenticatable
 {
