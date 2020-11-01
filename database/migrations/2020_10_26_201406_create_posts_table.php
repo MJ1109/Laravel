@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->boolean('type');
             $table->integer('year');
             $table->text('description');
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }
