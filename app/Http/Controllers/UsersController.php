@@ -18,4 +18,32 @@ class UsersController extends Controller
             'users' => $users
         ]);
     }
+
+//    public function update(Request $request, $id)
+//    {
+//        $post=Post::findOrFail($id);
+//
+//        //validation
+//        request()->validate([
+//            'title'=> 'required',
+//            'genre'=>'required',
+//            'image'=> 'required|ends_with:.jpg',
+//            'type'=> 'required',
+//            'year'=> 'required',
+//            'description'=> 'required'
+//
+//        ]);
+//
+//        $post->title = request('title');
+//        $post->genre_id=request('genre');
+//        $post->image = request('image');
+//        $post->type = request ('type');
+//        $post->year = request ('year');
+//        $post->description = request ('description');
+//        $post->save();
+//
+//
+//
+//        return redirect('/post/'.$post->id);
+//    }
 }

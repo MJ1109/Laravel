@@ -1,12 +1,21 @@
-
-
 @extends('layout')
 @section('content')
 
-@foreach($users as $user)
-
-
-    <h1>{{$user->id}}{{$user->name}}</h1>
-    <p>{{$user->email}}</p>
-
-@endforeach
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>email</th>
+        </tr>
+        </thead>
+    </table>
+    <tbody>
+    @foreach($users as $user)
+        <tr>
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+        </tr><br>
+    @endforeach
+    </tbody>
