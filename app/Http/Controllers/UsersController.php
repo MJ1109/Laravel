@@ -34,41 +34,41 @@ class UsersController extends Controller
         return redirect('/home');
 
     }
-//    public function show($user){
-////        $this->authorize('editUsers');
-//    return $user;
-//
-//    }
-//
-//    public function store(Request $request){
-//
-//}
-//
-//    public function edit($users_id){
-//        $this->authorize('editUser', $users_id);
-//        return view('users.edit', [
-//            'user' => $user
-//        ]);
-//    }
-//    }
-//
-//    public function update(Request $request, $id)
-//    {
-//        $user=User::findOrFail($id);
-//
-//        //validation
-//        request()->validate([
-//            'name'=> 'required',
-//            'email'=>'required',
-//        ]);
-//
-//        $user->name = request('name');
-//        $user->email=request('email');
-//
-//        $user->save();
-//
-//
-//
-//        return redirect('/post/'.$user->id);
-//    }
+
+    public function show($id)
+    {
+         $user=User::findOrFail($id);
+
+         return view ('users.user', [
+         "user"=>$user
+         ]);
+    }
+
+    public function edit($id)
+    {
+        $user=User::findOrFail($id);
+
+        $this->authorize('editUser', $user);
+
+        return view('users.edit', ['user'=> $user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user=User::findOrFail($id);
+
+        //validation
+        request()->validate([
+        'name'=>'required',
+        'email'=> 'required'
+        ]);
+
+        $user->name= request('name');
+        $user->email= request('email');
+        $user->save();
+
+        return redirect('/users/'.$user->id);
+
+    }
+
 }
