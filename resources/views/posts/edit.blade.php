@@ -4,7 +4,7 @@
 
 <h1>update the content</h1>
 
-<form method="POST" action="/post/{{ $post->id }}">
+<form method="POST" action="/posts/{{ $post->id }}">
     @csrf
     @method('PUT')
 
