@@ -74,7 +74,7 @@ class PostsController extends Controller
 
         ]);
 
-        //not the best way, but it works. Only has a lot of repition
+        //not the best way, but it works, has a lot of repition
         $post= new Post();
         $post->title = request('title');
         $post->genre_id = request('genre');
@@ -135,8 +135,6 @@ class PostsController extends Controller
         $post->description = request ('description');
         $post->save();
 
-
-
         return redirect('/post/'.$post->id);
     }
 
@@ -151,5 +149,10 @@ class PostsController extends Controller
         //
     }
 
+
+    public function filter($id)
+    {
+        //
+    }
 
 }
