@@ -18,6 +18,8 @@
 
                     <a href="{{route('posts.create')}}">create a post</a> <br>
 
+                    <a href="/users/{{$user->id}}/edit">edit your information</a>
+
 {{--                        visibility of the users overview link--}}
                     @can ('viewUsers')<a href="/users">overview of users</a>@endcan
 
